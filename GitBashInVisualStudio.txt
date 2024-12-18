@@ -1,0 +1,33 @@
+Steps to Use Bash in Visual Studio Community
+1. Install Git Bash (if not already installed)
+
+    Download and install Git for Windows: Git for Windows.
+    Git Bash will be installed as part of Git for Windows.
+
+2. Configure an External Tool for Bash in Visual Studio
+
+    Open External Tools Settings:
+        In Visual Studio, go to Tools > External Tools.
+
+    Add Git Bash:
+        Click the Add button.
+        Configure the fields as follows:
+            Title: Git Bash (or any name you like).
+            Command: Provide the path to bash.exe, usually located at:
+
+C:\Program Files\Git\bin\bash.exe
+
+Arguments: Leave this blank or use --login -i to start Bash in interactive mode.
+Initial Directory: Set this to the root directory of your solution using the placeholder:
+
+            $(SolutionDir)
+
+    Move Git Bash Up:
+        Use the Move Up button to place your new Git Bash entry near the top of the list for easier access.
+
+    Click OK to save the settings.
+
+3. Launch Bash from Visual Studio
+
+    Go to Tools > Git Bash (or the name you set in the previous step).
+    A Git Bash window will open in the context of your solution directory.

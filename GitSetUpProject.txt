@@ -1,0 +1,189 @@
+First set up local Git without remote repository to demonstrate
+then set up a new project and connect it to a github repository
+
+1. Setting Up the Initial ASP.NET Project
+
+    Create the Solution:
+
+    Set Up the Layers:
+        Create four new projects:
+            DataAccessLayer (handles database connections).
+            CoreLayer (business logic and interfaces).
+            ModelsLayer (entity definitions).
+            PresentationLayer (ASP.NET MVC project).
+
+    Set Project Dependencies:
+        Add references between layers:
+            DataAccessLayer depends on CoreLayer.
+            CoreLayer depends on ModelsLayer.
+            PresentationLayer depends on CoreLayer and ModelsLayer.
+        Right-click each project > Add > Project Reference > Select the dependent project.
+
+2. Setting Up Interfaces for Communication
+
+Add interfaces to define communication between layers. For instance:
+
+public interface IRepository<T>
+{
+    IEnumerable<T> GetAll();
+    T GetById(int id);
+    void Add(T entity);
+    void Update(T entity);
+    void Delete(int id);
+}
+
+public class Repository<T> : IRepository<T>
+{
+    public IEnumerable<T> GetAll() { return null; }
+    public T GetById(int id) { return default; }
+    public void Add(T entity) { }
+    public void Update(T entity) { }
+    public void Delete(int id) { }
+}
+
+
+public class SampleModel
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
+
+
+public class SampleController : Controller
+{
+    private readonly IRepository<SampleModel> _repository;
+
+    public SampleController(IRepository<SampleModel> repository)
+    {
+        _repository = repository;
+    }
+
+    public IActionResult Index()
+    {
+        var models = _repository.GetAll();
+        return View(models);
+    }
+}
+
+3. Connect to a New GitHub Repository
+
+    Initialize Git Repository:
+        Open a terminal in the solution directory.
+
+git init
+touch .gitignore
+Note: dependancies and packages should not be included in git project. Install them with the command:
+dotnet restore
+git add .
+git commit -m "Initial commit: Set up layered architecture"
+
+Create a GitHub Repository:
+
+    On GitHub, click New Repository, name it LayeredArchitectureSolution, and create it.
+    Connect the local repo to GitHub:
+
+        git remote add origin https://github.com/<username>/LayeredArchitectureSolution.git
+        git branch -M main
+        git push -u origin main
+
+4. Branch Workflow
+
+    Create Branches for Each Layer:
+
+git branch feature/data-access-layer
+git branch feature/core-layer
+git branch feature/models-layer
+git branch feature/presentation-layer
+
+Switch to Each Branch and Make Small Changes:
+
+    DataAccessLayer Branch:
+
+git checkout feature/data-access-layer
+
+Modify DataAccessLayer/Repository.cs to add basic CRUD methods.
+
+Commit changes:
+
+git add .
+git commit -m "Add basic CRUD operations to Repository class"
+
+CoreLayer Branch:
+
+git checkout feature/core-layer
+
+Add additional methods to IRepository (e.g., Find).
+
+Commit changes:
+
+git add .
+git commit -m "Update IRepository with Find method"
+
+ModelsLayer Branch:
+
+git checkout feature/models-layer
+
+Add a new property to SampleModel:
+
+public DateTime CreatedAt { get; set; }
+
+Commit changes:
+
+git add .
+git commit -m "Add CreatedAt property to SampleModel"
+
+PresentationLayer Branch:
+
+git checkout feature/presentation-layer
+
+Modify SampleController to use the new property.
+
+Commit changes:
+
+    git add .
+    git commit -m "Update SampleController to include CreatedAt property"
+
+Push Branches to Remote:
+
+    git push origin feature/data-access-layer
+    git push origin feature/core-layer
+    git push origin feature/models-layer
+    git push origin feature/presentation-layer
+
+5. Create Pull Requests and Merge
+
+    Create Pull Requests:
+        On GitHub, go to the repository and switch to each branch.
+        Click Pull Requests > New Pull Request.
+        Compare the branch (e.g., feature/data-access-layer) against main.
+        Add a title and description, then click Create Pull Request.
+
+    Merge Pull Requests:
+        Review the changes on GitHub.
+        Click Merge Pull Request.
+        Delete the branch after merging.
+
+6. Resolving Merge Conflicts (If Any)
+
+    If conflicts occur during merging:
+        GitHub will notify you and show conflicting files.
+        Resolve conflicts using the GitHub editor or pull the branch locally:
+
+        git pull origin main
+        git merge feature/branch-name
+        # Resolve conflicts manually in conflicting files.
+        git add .
+        git commit -m "Resolve merge conflicts"
+        git push origin feature/branch-name
+
+        Once resolved, complete the merge on GitHub.
+
+7. Local merge branches for demo purposes
+
+8. Showcase the Workflow
+
+Now that the branches are merged, the repository will contain:
+
+    A structured layered architecture.
+    A simple CRUD implementation with a working controller.
+    A collaborative Git workflow with branches, commits, pull requests, and merges.

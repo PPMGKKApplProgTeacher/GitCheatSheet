@@ -1,0 +1,193 @@
+# Setting Up a Project
+
+git clone <repository_url>
+# Clones a remote repository to your local machine.
+
+git init
+# Initializes a new Git repository in the current directory.
+
+git remote add origin <repository_url>
+# Adds a remote repository with the name 'origin'.
+
+git remote -v
+# Lists all remote repositories.
+
+# Branch Management
+
+git branch <branch_name>
+# Creates a new branch without switching to it.
+
+git checkout <branch_name>
+# Switches to the specified branch.
+
+git checkout -b <branch_name>
+# Creates a new branch and switches to it immediately.
+
+git branch
+# Lists all local branches.
+
+git branch -m <new_branch_name>
+# Renames the current branch.
+
+# Working with Changes
+
+git status
+# Displays the state of your working directory and staging area.
+
+git add <file_or_directory>
+# Adds changes to the staging area.
+
+git add .
+# Adds all changes in the working directory to the staging area.
+
+git reset <file_or_directory>
+# Removes changes from the staging area.
+
+git commit -m "Commit message"
+# Records staged changes to the repository with a message.
+
+git commit --amend
+# Modifies the most recent commit.
+
+# Syncing with Remote
+
+git push origin <branch_name>
+# Pushes changes from the local branch to the remote branch.
+
+git pull origin <branch_name>
+# Fetches changes from the remote branch and merges them into the local branch.
+
+git fetch
+# Fetches changes from the remote repository without merging them.
+
+git push -f origin <branch_name>
+# Force pushes changes to a remote branch, potentially overwriting changes.
+
+git push --set-upstream origin <branch_name>
+# Sets the upstream (remote tracking) branch for the current local branch.
+
+# Pull Requests (PRs)
+
+gh pr create
+# Creates a pull request using the GitHub CLI. Adds a title and description via the CLI or prompts.
+
+gh pr list
+# Lists all open pull requests for the repository.
+
+gh pr checkout <pr_number>
+# Checks out a pull request locally for testing or reviewing.
+
+gh pr merge <pr_number>
+# Merges a pull request. Options include merging via squash or rebase.
+
+# GitHub Tip: Pull Requests
+# - In the GitHub web UI, navigate to the "Pull Requests" tab.
+# - Click "New Pull Request" to compare branches and open a PR.
+# - Use "Files Changed" to review differences.
+# - After approvals, click "Merge Pull Request."
+
+# Merging and Conflict Resolution
+
+git merge <source_branch>
+# Merges the specified branch into the current branch.
+
+git rebase <base_branch>
+# Reapplies commits from the current branch onto the specified branch.
+
+git merge --continue
+# Continues merging after resolving conflicts.
+
+# GitHub Tip: Conflict Resolution
+# - If there are conflicts, GitHub will notify you during the merge.
+# - Use the web editor to resolve conflicts, then commit the changes.
+# - Alternatively, fetch the branch locally, resolve conflicts, and push.
+
+# Branch Deletion
+
+git branch -d <branch_name>
+# Deletes a local branch (safe if merged).
+
+git branch -D <branch_name>
+# Deletes a local branch (force delete).
+
+git push origin --delete <branch_name>
+# Deletes a remote branch.
+
+# Forks
+
+gh repo fork <repository_url>
+# Forks a repository using the GitHub CLI.
+
+git clone <your_fork_url>
+# Clones the forked repository to your local machine.
+
+# GitHub Tip: Forks
+# - Click the "Fork" button in the top-right corner of a repository page.
+# - This creates a personal copy under your GitHub account.
+
+# Cherry-Picking
+
+git cherry-pick <commit_hash>
+# Applies a specific commit from another branch into the current branch.
+
+git cherry-pick --continue
+# Completes the cherry-picking process after resolving conflicts.
+
+# Stashing Changes
+
+git stash
+# Stashes changes in the working directory.
+
+git stash list
+# Lists all stashed changes.
+
+git stash apply
+# Applies the latest stash without removing it from the stash list.
+
+git stash pop
+# Applies the latest stash and removes it from the stash list.
+
+# Tags
+
+git tag <tag_name>
+# Creates a tag for the current commit.
+
+git push origin <tag_name>
+# Pushes the specified tag to the remote repository.
+
+# Submodules
+
+git submodule add <repository_url> <submodule_path>
+# Adds a repository as a submodule.
+
+git submodule update --init --recursive
+# Clones and initializes all submodules in the repository.
+
+git submodule deinit -f <submodule_path>
+# Removes a submodule while keeping its directory and data.
+
+# Inspecting and Undoing Changes
+
+git log
+# Shows the commit history.
+
+git log --oneline
+# Shows a condensed commit history.
+
+git show <commit_hash>
+# Shows changes in a specific commit.
+
+git diff <source_branch> <target_branch>
+# Shows differences between two branches.
+
+git blame <file>
+# Shows the origin of each line in a file.
+
+git revert <commit_hash>
+# Creates a new commit that undoes changes from the specified commit.
+
+git reset --soft <commit_hash>
+# Resets to a specific commit but keeps changes in the working directory.
+
+git reset --hard <commit_hash>
+# Resets to a specific commit and removes all changes.

@@ -1,0 +1,76 @@
+# Repository
+# A repository (repo) is the core of Git where the entire project, including its history of changes, is stored.
+
+# Branch
+# A branch is a pointer to a specific commit. It represents an independent line of development.
+
+# Commit
+# A commit is a snapshot of changes made to the repository. It includes a unique hash to identify it.
+
+# Staging Area
+# The staging area (or index) is a space where changes are prepared before committing.
+
+# Working Directory
+# The working directory contains the files you are currently working on. Changes here must be staged and committed.
+
+# Remote Repository
+# A remote repository is hosted on a server (e.g., GitHub) and allows collaboration with other developers.
+
+# Clone
+# Cloning creates a local copy of a remote repository on your machine.
+
+# Pull
+# A pull fetches changes from the remote repository and merges them into your local branch.
+
+# Push
+# A push uploads your local branch changes to the remote repository.
+
+# Merge
+# Merging combines changes from one branch into another. 
+
+# Rebase
+# Rebasing rewrites commit history by applying changes from one branch on top of another.
+
+# Conflict
+# A conflict occurs when Git cannot automatically reconcile differences during a merge or rebase.
+
+# Tag
+# A tag marks a specific commit, often used to denote releases (e.g., v1.0.0).
+
+# Stash
+# Stashing temporarily saves changes that are not ready to commit, allowing you to switch branches.
+
+# HEAD
+# HEAD is a pointer to the current branch or commit you are working on.
+
+# Origin
+# 'origin' is the default name given to the remote repository you cloned from or pushed to.
+
+# Upstream
+# The upstream branch is the branch your local branch is tracking changes from.
+
+# Pull Request
+# A pull request is a request to merge changes from one branch (typically a feature branch) into another branch (usually the main branch). 
+# It allows collaborators to review, discuss, and approve changes before merging.
+
+# Fork
+# A fork creates an independent copy of a repository under your GitHub account. 
+# It is often used to contribute to open-source projects.
+
+# Cherry-pick
+# Cherry-picking applies a specific commit from one branch to another, without merging the entire branch.
+
+# Submodule
+# A submodule is a repository nested inside another repository, useful for managing dependencies.
+
+# Detached HEAD
+# Detached HEAD is a state where your HEAD pointer does not point to any branch but a specific commit.
+
+# Blame
+# Git blame shows which commit last modified each line of a file, helping identify contributors and changes.
+
+# Revert
+# Reverting creates a new commit that undoes changes made by a previous commit.
+
+# Reset
+# Reset modifies the state of your repository by moving the HEAD to a different commit and optionally changing the working directory or staging area.
